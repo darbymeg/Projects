@@ -18,26 +18,8 @@ capacity_area = min(capacity_anode,capacity_cathode)
 # discharge the battery all the way (dPhi_eq would go to plus/minus infinity!)
 t_final = charge_frac*3600./C_rate
 
-#Test initial temperatures of battery
-T_0_c = np.array([-40., -30., -20., -10., 0.])
-T_0 = np.array([-40., -30., -20., -10., 0.]) +273
-
-
-# # Set solution vector
-# SV_0 = np.array([phi_dl_an_0, 0, 0, phi_dl_ca_0, 0])
-
-# Create class to point to the correct variable locations in the SV:
-class ptr:
-    phi_an = 0
-    T_an = 1
-
-    T_elyte = 2
-
-    phi_ca = 3
-    T_ca = 4
-
 # Load inputs and other parameters into 'pars' class:
-
+    
 #Preparatory calculations that we don't want stored in 'pars':
 
 # Volume- and mass-weighted average density and Cp, respectively:

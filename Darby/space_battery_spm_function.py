@@ -1,10 +1,32 @@
 import numpy as np
 from math import exp
+from space_battery_spm_init import phi_dl_an_0, phi_dl_ca_0
+from space_battery_spm_init import T_amb
 
 # Constants
 F = 96485
 R = 8.3145
 sigma = 5.670e-8
+
+
+#Test initial temperatures of battery
+T_0_c = np.array([T_amb-273.15, -40., -30., -20., -10., 0.])          #T0 array
+T_0 = np.array([T_amb-273.15,-40., -30., -20., -10., 0.]) +273.15     #dummy way: convert back to C
+
+
+#Set solution vector
+SV_0 = np.array([phi_dl_an_0, T_0, T_0, phi_dl_ca_0, T_0])
+
+# Create class to point to the correct variable locations in the SV:
+class ptr:
+    phi_an = 0
+    T_an = 1
+
+    T_elyte = 2
+
+    phi_ca = 3
+    T_ca = 4
+
 
 def residual(t, SV, pars, ptr, flags):
 
